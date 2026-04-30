@@ -2,15 +2,15 @@ import type { Metadata, Site, Socials } from "@types";
 
 export const SITE: Site = {
   TITLE: "Next Post",
-  DESCRIPTION: "记录思维的轨迹，把日常灵感变成可提取的知识晶体。",
+  DESCRIPTION: "记录转瞬即逝的念头，然后等待它们慢慢发芽。",
   EMAIL: "hello@example.com",
   NUM_POSTS_ON_HOMEPAGE: 5,
   NUM_PROJECTS_ON_HOMEPAGE: 0,
 };
 
 export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "记录思维的轨迹，把日常灵感变成可提取的知识晶体。",
+  TITLE: "Next Post",
+  DESCRIPTION: "记录转瞬即逝的念头，然后等待它们慢慢发芽。",
 };
 
 export const BLOG: Metadata = {
