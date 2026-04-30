@@ -5,8 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: Geist Sans, ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: 'Noto Serif SC', 'Source Han Serif CN', Georgia, serif;
   --font-mono: Geist Mono, ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
@@ -46,7 +45,7 @@
   }
 
   body {
-    @apply font-sans antialiased;
+    @apply font-serif antialiased;
     @apply flex flex-col;
     @apply bg-[#fffbf0] dark:bg-neutral-900;
     @apply text-black/75 dark:text-white/75;
@@ -75,7 +74,7 @@
 
 @layer utilities {
   article a {
-    @apply font-sans text-current underline underline-offset-[3px];
+    @apply font-serif text-current underline underline-offset-[3px];
     @apply decoration-black/30 dark:decoration-white/30;
     @apply transition-colors duration-300 ease-in-out;
   }
