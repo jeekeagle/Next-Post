@@ -15,12 +15,18 @@ function buildToc(headings: Heading[]) {
   const toc: Heading[] = [];
   const parentHeadings = new Map();
   headings.forEach((h) => {
+    if (h.depth === 1) return; // skip h1 (page title)
     const heading = { ...h, subheadings: [] };
     parentHeadings.set(heading.depth, heading);
     if (heading.depth === 2) {
       toc.push(heading);
     } else {
-      parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+      const parent = parentHeadings.get(heading.depth - 1);
+      if (parent) {
+        parent.subheadings.push(heading);
+      } else {
+        toc.push(heading); // fallback: no parent h2 found, treat as h2
+      }
     }
   });
   return toc;
