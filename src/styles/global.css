@@ -6,6 +6,7 @@
 
 @theme {
   --font-serif: 'Noto Serif SC', 'Source Han Serif CN', Georgia, serif;
+  --font-hero: 'Lora', 'Noto Serif SC', Georgia, serif;
   --font-mono: Geist Mono, ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
@@ -91,6 +92,71 @@
 
 .animate.show {
   @apply translate-y-0 opacity-100;
+}
+
+/* ============================================
+   HERO TAGLINE — elegant serif hero text
+   ============================================ */
+.hero-tagline {
+  font-family: var(--font-hero);
+  font-size: 1.05rem;
+  line-height: 2;
+  letter-spacing: 0.02em;
+  color: inherit;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.hero-tagline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.2em;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(193, 127, 74, 0.6) 20%,
+    rgba(193, 127, 74, 0.8) 50%,
+    rgba(193, 127, 74, 0.6) 80%,
+    transparent
+  );
+}
+
+.hero-tagline .line-1 {
+  font-style: italic;
+  font-weight: 500;
+  color: #1a1a1a;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.1em;
+}
+
+.hero-tagline .line-2 {
+  font-style: normal;
+  font-weight: 400;
+  color: #555;
+  font-size: 0.95em;
+  letter-spacing: 0.03em;
+}
+
+html.dark .hero-tagline .line-1 {
+  color: #e8e0d0;
+}
+
+html.dark .hero-tagline .line-2 {
+  color: #999;
+}
+
+html.dark .hero-tagline::before {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(193, 127, 74, 0.5) 20%,
+    rgba(193, 127, 74, 0.7) 50%,
+    rgba(193, 127, 74, 0.5) 80%,
+    transparent
+  );
 }
 
 html #back-to-top {
