@@ -10,19 +10,19 @@ const data = (await getCollection("blog"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 type Acc = {
-  [year: string]: CollectionEntry<"blog">[];
+  [day: string]: CollectionEntry<"blog">[];
 };
 
 const posts = data.reduce((acc: Acc, post) => {
-  const year = post.data.date.getFullYear().toString();
-  if (!acc[year]) {
-    acc[year] = [];
+  const day = post.data.date.toISOString().split('T')[0];
+  if (!acc[day]) {
+    acc[day] = [];
   }
-  acc[year].push(post);
+  acc[day].push(post);
   return acc;
 }, {});
 
-const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
+const days = Object.keys(posts).sort((a, b) => b.localeCompare(a));
 ---
 
 <Layout title={BLOG.TITLE} description={BLOG.DESCRIPTION}>
@@ -31,14 +31,14 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
       <div class="space-y-10">
         <div class="space-y-4">
           {
-            years.map((year) => (
+            days.map((day) => (
               <section class="animate space-y-4">
                 <div class="font-semibold text-black dark:text-white">
-                  {year}
+                  {day}
                 </div>
                 <div>
                   <ul class="not-prose flex flex-col gap-4">
-                    {posts[year].map((post) => (
+                    {posts[day].map((post) => (
                       <li>
                         <ArrowCard entry={post} />
                       </li>
